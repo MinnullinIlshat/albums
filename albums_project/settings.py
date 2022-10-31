@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     # local
-    'albums.apps.AlbumsConfig'
+    'albums.apps.AlbumsConfig',
+    'apis.apps.ApisConfig',
 ]
 
 MIDDLEWARE = [

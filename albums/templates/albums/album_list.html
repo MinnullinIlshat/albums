@@ -1,0 +1,9 @@
+<!--albums/templates/albums/album_list.html-->
+<h1>All albums</h1>
+{% for album in album_list %}
+<ul>
+    <li>Album name: {{ album.name }}</li>
+    <li>Year: {{ album.year }}</li>
+    <li>Artist: {{ album.artist.name }}</li>
+</ul>
+{% endfor %}
