@@ -7,5 +7,4 @@ from .views import index
 urlpatterns = [ 
     path('', index, name='home'),
     path('sort_by/<str:sort_by>/', index, name='sort_by'),
-    #path('sort_by/<str:sort_by>/', index, name='sort_by_artist_name')
 ]
