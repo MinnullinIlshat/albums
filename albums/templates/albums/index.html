@@ -1,10 +1,45 @@
 <!--albums/templates/albums/album_list.html-->
 <h1>All albums</h1>
-{% for album in responses %}
-<ul>
-    <li>Album name: {{ album.album }}</li>
-    <li>Year: {{ album.name }}</li>
-    <li>Artist name: {{ album.artist.name }}</li>
-    <li>Tracks: {{ album.tracks }}
-</ul>
-{% endfor %}
+<head>
+    <style>
+        body {
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            border-color: #ff0000;
+            text-align: left;
+            vertical-align: top;
+        }
+        th, td {
+            background-color: #96D4D4;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+        <th>Album</th>
+        <th>Name
+            <p><a href="{% url 'sort_by' 'album_name' %}">sort</a></p>
+        </th>
+        <th>Artist name
+            <p><a href="{% url 'sort_by' 'artist_name' %}">sort</a></p>
+        </th>
+        <th>Tracks</th>
+        </tr>
+        {% for album in responses %}
+        <tr>
+        <td>{{ album.album }}</td>
+        <td>{{ album.name }}</td>
+        <td>{{ album.artist.name }}</td>
+        <td>
+            {% for track in album.tracks %}
+            <p>{{ track }}</p>
+            {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
