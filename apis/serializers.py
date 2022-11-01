@@ -15,10 +15,7 @@ class TrackSerializer(serializers.ModelSerializer):
 class AlbumSerializer(serializers.ModelSerializer):
     album = serializers.SerializerMethodField()
     artist = ArtistSerializer()
-    tracks = serializers.SerializerMethodField()
-
-    def get_tracks(self, album):
-        return get_tracks(album)
+    tracks = serializers.StringRelatedField(many=True)
 
     def get_album(self, album):
         return str(album)
@@ -26,6 +23,3 @@ class AlbumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Album 
         fields = ("album", "name", "artist", "tracks")
-
-def get_tracks(album):
-    return album.track_set.all()
