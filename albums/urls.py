@@ -1,9 +1,9 @@
 # albums/urls.py 
 from django.urls import path
 
-from .views import AlbumListView
+from .views import index
 
 
 urlpatterns = [ 
-    path('', AlbumListView.as_view(), name='home'),
+    path('', index, name='home'),
 ]

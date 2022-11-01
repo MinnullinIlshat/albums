@@ -1,9 +1,8 @@
 #albums/views.py
-from django.views.generic import ListView 
+from django.shortcuts import render 
+import requests 
 
-from .models import Album
 
-
-class AlbumListView(ListView):
-    model = Album 
-    template_name = 'album_list.html'
+def index(request):
+    responses = requests.get('http://127.0.0.1:8000/api/').json()
+    return render(request, 'albums/index.html', {'responses': responses})
